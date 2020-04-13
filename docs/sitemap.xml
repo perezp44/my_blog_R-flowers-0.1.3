@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
-    <loc>https://github.com/perezp44/about.html</loc>
+    <loc>https://perezp44.github.io/about.html</loc>
     <lastmod>2020-04-13T19:12:19+02:00</lastmod>
   </url>
   <url>
-    <loc>https://github.com/perezp44/distill-blog.html</loc>
+    <loc>https://perezp44.github.io/distill-blog.html</loc>
     <lastmod>2020-04-13T18:59:08+02:00</lastmod>
   </url>
   <url>
-    <loc>https://github.com/perezp44/</loc>
+    <loc>https://perezp44.github.io/</loc>
     <lastmod>2020-04-13T20:52:52+02:00</lastmod>
   </url>
   <url>
-    <loc>https://github.com/perezp44/tt_gestionar-distill-blog.html</loc>
+    <loc>https://perezp44.github.io/tt_gestionar-distill-blog.html</loc>
     <lastmod>2020-04-13T20:51:55+02:00</lastmod>
   </url>
   <url>
-    <loc>https://github.com/perezp44/posts/2020-04-13-sending-mails-with-r/</loc>
+    <loc>https://perezp44.github.io/posts/2020-04-13-sending-mails-with-r/</loc>
     <lastmod>2020-04-13T20:58:35+02:00</lastmod>
   </url>
 </urlset>
