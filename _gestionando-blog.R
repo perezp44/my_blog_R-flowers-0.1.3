@@ -14,12 +14,6 @@ rmarkdown::render_site(input = "index.Rmd", encoding = "UTF-8")
 
 
 
-
-
-
-
-
-
 #- iniciar Git
 git init
 
