@@ -8,7 +8,7 @@ distill::create_post("Sending mails with R")
 git init
 
 #- vas a Github y creas un nuevo repo (sin Readme) y copias el link, entonces haces:
-git remote add origin https://github.com/perezp44/prueba_deply_Distill.git  
+git remote add origin https://github.com/perezp44/my_distill_web-blog.git  
 
 #- llevar a Git -------------------------------
 git add -A
