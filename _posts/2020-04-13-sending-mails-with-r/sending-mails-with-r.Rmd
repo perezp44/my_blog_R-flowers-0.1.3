@@ -12,7 +12,8 @@ categories:
   - mail
   - Google  
 draft: false
-preview: imageness/foto-post-gmail.jpg
+#base_url: https://perezp44.github.io/my_distill_web-blog/
+preview: imagenes/foto-post-gmail.jpg
 output:
   distill::distill_article:
     self_contained: false
