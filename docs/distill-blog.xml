@@ -2,14 +2,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>R &amp; flowers (o casi)</title>
-    <link>https://perezp44.github.io/my_distill_web-blog/</link>
+    <link>https://perezp44.github.io/my_distill_web-blog</link>
     <atom:link href="https://perezp44.github.io/my_distill_web-blog/distill-blog.xml" rel="self" type="application/rss+xml"/>
     <description>Blog para divertirme y aprender con R
 </description>
     <image>
       <title>R &amp; flowers (o casi)</title>
       <url>https://perezp44.github.io/my_distill_web-blog/imagenes/favicon.png</url>
-      <link>https://perezp44.github.io/my_distill_web-blog/</link>
+      <link>https://perezp44.github.io/my_distill_web-blog</link>
     </image>
     <generator>Distill</generator>
     <lastBuildDate>lun, 13 abr 2020 00:00:00 +0000</lastBuildDate>
@@ -21,7 +21,6 @@
 Repaso de otros paquetes para mandar mails con R.</description>
       <guid>https://perezp44.github.io/my_distill_web-blog/posts/2020-04-13-sending-mails-with-r</guid>
       <pubDate>lun, 13 abr 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://perezp44.github.io/my_distill_web-blog/posts/2020-04-13-sending-mails-with-r/imagenes/foto-post-gmail.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>
 </rss>
