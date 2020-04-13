@@ -2,7 +2,23 @@ file.create(".nojekyll")
 #- crear un Distill post ------------------------------
 distill::create_post("Sending mails with R")
 
-#- Acuerdate q has de knittear los posts a mano
+#- Acuerdate q has de knittear los posts a mano o:
+distill::create_post(title = "name-of-post", date_prefix = FALSE, draft = TRUE)
+
+#- Build post for publication:
+rmarkdown::render("_posts/<post>/<post>.Rmd")
+rmarkdown::render_site(input = "index.Rmd", encoding = "UTF-8")
+
+
+#* [distill docs](https://rstudio.github.io/distill/)
+
+
+
+
+
+
+
+
 
 #- iniciar Git
 git init

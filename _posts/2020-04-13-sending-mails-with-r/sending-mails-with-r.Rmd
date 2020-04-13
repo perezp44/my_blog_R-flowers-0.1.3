@@ -13,7 +13,7 @@ categories:
   - Google  
 draft: false
 #base_url: https://perezp44.github.io/my_blog_R-flowers-0.1.3/posts/2020-04-13-sending-mails-with-r  
-base_url: https://perezp44.github.io/my_blog_R-flowers-0.1.3/docs
+#base_url: https://perezp44.github.io/my_blog_R-flowers-0.1.3/docs
 preview: imagenes/foto-post-gmail.jpg
 output:
   distill::distill_article:
