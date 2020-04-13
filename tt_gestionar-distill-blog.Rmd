@@ -44,6 +44,14 @@ library(tidyverse)
 
 Por lo que entiendo, el paquet Distill se creó para hacer blogs, pero también se puede hacer una pagina web con blog. la verdad es que tampoco hay mucha diferencia
 
+
+
+```{r, echo = TRUE, eval = TRUE, fig.asp = 4/2, out.width = "75%", fig.align = "center", fig.cap = 'IA, ML y DL'}
+knitr::include_graphics(here::here("imagenes", "01_AI-ML-DL.png"))
+```
+
+
+
 -----------------------
   
 ## 2. Creación del blog
