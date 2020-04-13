@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
-    <loc>https://perezp44.github.io/my_distill_web-blog/about.html</loc>
+    <loc>https://perezp44.github.io/my_blog_R-flowers-0.1.3/about.html</loc>
     <lastmod>2020-04-13T19:12:19+02:00</lastmod>
   </url>
   <url>
-    <loc>https://perezp44.github.io/my_distill_web-blog/distill-blog.html</loc>
+    <loc>https://perezp44.github.io/my_blog_R-flowers-0.1.3/distill-blog.html</loc>
     <lastmod>2020-04-13T18:59:08+02:00</lastmod>
   </url>
   <url>
-    <loc>https://perezp44.github.io/my_distill_web-blog/</loc>
+    <loc>https://perezp44.github.io/my_blog_R-flowers-0.1.3/</loc>
     <lastmod>2020-04-13T20:52:52+02:00</lastmod>
   </url>
   <url>
-    <loc>https://perezp44.github.io/my_distill_web-blog/tt_gestionar-distill-blog.html</loc>
-    <lastmod>2020-04-13T21:24:44+02:00</lastmod>
+    <loc>https://perezp44.github.io/my_blog_R-flowers-0.1.3/tt_gestionar-distill-blog.html</loc>
+    <lastmod>2020-04-13T22:08:19+02:00</lastmod>
   </url>
   <url>
-    <loc>https://perezp44.github.io/my_distill_web-blog/posts/2020-04-13-sending-mails-with-r/</loc>
-    <lastmod>2020-04-13T21:40:42+02:00</lastmod>
+    <loc>https://perezp44.github.io/my_blog_R-flowers-0.1.3/posts/2020-04-13-sending-mails-with-r/</loc>
+    <lastmod>2020-04-13T22:08:29+02:00</lastmod>
   </url>
 </urlset>
