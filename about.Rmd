@@ -1,0 +1,14 @@
+---
+title: "*!  "
+#description: |
+#    Un poco sobre mi.
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Me llamo Pedro. Trabajo como profesor en la Universidad de Valencia. Entusiasta de R. Un poquito viciado a (intentar) aprender cosas de programación. Un poco  tarde, aunque Benjamín Prado dice que [nunca es tarde](https://www.youtube.com/watch?v=-bnacS-_Gi8)
+
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="es" dir="ltr">&quot;Nunca es tarde para empezar de cero,<br>para quemar los barcos,<br>para que alguien te diga:<br>-Yo sólo puedo estar contigo o contra mí.<br>Nunca es tarde para cortar la cuerda,<br>para volver a echar las campanas al vuelo,<br>para beber de ese agua que no ibas a beber&quot;.<br>Benjamín Prado <a href="https://t.co/YppQ1UAXHk">pic.twitter.com/YppQ1UAXHk</a></p>&mdash; literland (@literlandweb1) <a href="https://twitter.com/literlandweb1/status/1107275498026139650?ref_src=twsrc%5Etfw">March 17, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+

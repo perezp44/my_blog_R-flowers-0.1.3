@@ -1,0 +1,208 @@
+---
+title: "Gestionando un Distill website-blog"
+description: |
+  Una bitacora sobre la creación y gestión de una website con blog hecha con Distill <br>
+  Además iré apuntando los truquitos que vaya viendo.
+#author: 
+#  - name: "Pedro J. Pérez"
+#     affiliation: University of valencia
+output:
+  distill::distill_article:
+      toc: true
+      toc_float: yes
+---
+
+
+
+
+```{r chunk_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE, 
+                      cache = FALSE, cache.path = "/caches/", comment = "#>",
+                      #fig.width = 7, fig.height= 7,   
+                      #out.width = 7, out.height = 7,
+                      collapse = TRUE,  fig.show = "hold",
+                      fig.asp = 7/9, out.width = "60%", fig.align = "center")
+```
+
+
+
+```{r options_setup, echo = F}
+options(scipen = 999) #- para quitar la notacion cientifica
+```
+
+```{r, echo = FALSE}
+library(knitr)
+library(here)
+library(tidyverse)
+```
+
+
+
+## 1. Introducción
+
+[`Distill` for R Markdown](https://rstudio.github.io/distill/) is a web publishing format optimized for scientific and technical communication. Yo supe de Distill viendo el webinar [`Sharing materials in short notice`](https://resources.rstudio.com/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown). 
+
+Por lo que entiendo, el paquet Distill se creó para hacer blogs, pero también se puede hacer una pagina web con blog. la verdad es que tampoco hay mucha diferencia
+
+-----------------------
+  
+## 2. Creación del blog
+
+Para crear de la `web con blog` hice:
+
+- En RStudio creas un nuevo Rproject. Ha de ser una `Distill website`. Se crea el skeleton: _site.yml, index.Rmd, about.Rmd
+
+- Ya puedes construir la website. Arreglas los títulos etc...
+
+- Creas carpetas: doc, datos, imagenes, _posts
+
+- 
+
+  
+
+
+-----------------------
+
+## 3. Trucos Distill
+
+
+- <https://rstudio.github.io/distill/>
+
+
+- Puedes poner un trozo de texto o un chunk entre las etiquetas: `<aside> ... </aside>` y se verá como lo de Tufte  
+
+- When you use the RStudio Knit command on a Distill article within a website, only that article will be rendered and previewed:
+
+- Para render un solo articulo tb puedes hacer `render_site("about.Rmd")`. This will build only the specified article (as opposed to all articles in the site). This the recommended workflow for authoring articles since it offers the fastest turnaround time for previews (since only the article you are working on is rendered)
+
+- Puedes usar iconos de aquí: <https://fontawesome.com/>   aqui esta el catalogo de iconos free: <https://fontawesome.com/icons?d=gallery&m=free>
+
+
+- se puede poner footer:
+
+```
+© Copyright 2018 [The Distill Template Authors]
+(https://github.com/distillpub/template/blob/master/AUTHORS) 
+and [RStudio, Inc](https://www.rstudio.com).
+
+Software licensed under the [Apache License, v2.0]
+(https://www.apache.org/licenses/LICENSE-2.0).
+```
+
+
+- se puede poner Google Analytics
+
+- puedse ponerle Disquus y enlace a twitter (pero hace falta el base_url)
+
+- Para crear un post: `distill::create_post("Week1")`
+
+- para crear un draft: `create_post("The Sharpe Ratio", draft = TRUE)`
+
+- You work on blog posts independent of the enclosing website (use Knit to render and preview the post just like any R Markdown document). This is in fact the only way to update post content — posts are considered standalone documents that are not re-rendered when the site is built. This is because posts are often expensive to render and have R package dependencies that may be difficult to satisfy as time goes on.
+
+- el plot q hace de preview es el primero, PERO lo puedes elegir poniendo esto en el yaml : `preview: images/sharpe-ratio.png` o poner en el chunk que quieras la opción `preview = TRUE`:
+
+```{r, layout="l-body-outset", preview=TRUE, eval = FALSE}
+library(ggplot2)
+ggplot(diamonds, aes(carat, price)) + geom_smooth() +
+  facet_grid(~ cut)
+distill::distill_article()
+```
+
+
+
+
+```
+distill_article(toc = FALSE, toc_depth = 3, fig_width = 6.5,
+  fig_height = 4, fig_retina = 2, fig_caption = TRUE, dev = "png",
+  smart = TRUE, self_contained = TRUE, mathjax = "default",
+  extra_dependencies = NULL, css = NULL, includes = NULL,
+  keep_md = FALSE, lib_dir = NULL, md_extensions = NULL,
+  pandoc_args = NULL, ...)
+```
+
+
+
+- el paquete `ymlthis` parece que indica que se pueden hacer colecciones: https://ymlthis.r-lib.org/reference/yml_distill_opts.html
+
+
+
+
+- Puedes jugar con el layout de las figuras: https://rstudio.github.io/distill/figures.html
+
+- Para incluir una imagen externa: `out.extra="class=external"`
+
+```{r fig.cap = "Figure from https://example.com", out.extra = "class=external", eval = FALSE}
+knitr::include_graphics("images/heatmap.png")
+```
+
+- La figuras se pueden referenciar
+
+-----------------------------
+
+
+## 4. más de yaml
+
+
+```
+author:
+  - name: Pedro J. Pérez
+    url: https://example.com/norajones
+    affiliation: University of Valencia
+    affiliation_url: https://example.com/spacelysprokets
+```
+
+
+
+------------------------------
+
+
+## 5. Git para el blog (2020)
+
+Creé todo el Rproject y tb hice un build de la pagina web en local. Cuando ya lo tienes todo OK haces: 
+
+1. Abrí una terminal e hice
+
+```{bash, eval = FALSE}
+git init
+```
+
+2. Te vas a Github y creas un nuevo repo (sin Readme) y copias el link, entonces haces:
+
+
+```{bash, eval = FALSE}
+git remote add origin https://github.com/perezp44/prueba_deply_Distill.git
+git add -A
+git commit --all --message "todo a Github"
+git push -u origin master
+```
+
+
+Ya esta!!
+
+
+##  Biblio
+
+
+- [Tutorial de RStudio sobre Distill](https://rstudio.github.io/distill/website.html). Toda una página web donde se explica Distill con detalle.
+
+- [webinar `Sharing materials in short notice`](https://resources.rstudio.com/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown). Un webinar fantástico hecho durante el covid-19 para que los teachers puedan compartir materiales. El repo está [aquí](https://github.com/rstudio-education/sharing-short-notice)  y las slides están [aquí](https://rstudio-education.github.io/sharing-short-notice/#1)
+
+- [Distill antes se llamaba `radix`](https://blog.rstudio.com/2018/09/19/radix-for-r-markdown/)
+
+- [Distill or blogdown](https://emitanaka.rbind.io/post/scientific-and-technical-blogging-radix-vs-blogdown-remix/). Emi Tanaka habla sobre qué es mejor hacer blog con `blogdown` o con `Distill`. Vuelve a hacerlo [aquí](https://emitanaka.org/r/posts/2018-12-12-scientific-and-technical-blogging-radix-vs-blogdown/). Es el mismo posts pero en otro formato.
+
+- <https://distill.pub/journal/>
+
+- <https://distill.pub/guide/>
+
+
+
+## Ejemplos blogs con Distill
+
+- Un blog Distill: <https://www.diwashrestha.com.np/>
+
+- Al final de este post hay ejemplos de blogs con Distill: p.ejemplo: <https://github.com/rstudio/tensorflow-blog>
+
+
+

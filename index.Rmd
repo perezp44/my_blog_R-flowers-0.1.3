@@ -1,0 +1,31 @@
+---
+title: "R & flowers 0.1.3"
+description: |
+  Blog para divertirme y aprender con R
+author:
+  - name: Pedro J. Pérez
+date: "`r Sys.Date()`"  
+site: distill::distill_website
+---
+
+
+```{r chunk_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE, 
+                      cache = FALSE, cache.path = "/caches/", comment = "#>",
+                      #fig.width = 7, fig.height= 7,   
+                      #out.width = 7, out.height = 7,
+                      collapse = TRUE,  fig.show = "hold",
+                      fig.asp = 7/9, out.width = "75%", fig.align = "center")
+```
+
+```{r options_setup, echo = FALSE}
+options(scipen = 999) #- para quitar la notacion cientifica
+```
+
+<br>
+
+  
+Blog para divertirme y aprender, generalmente cosas sobre programación y R. Además acabo de ver un meme con lo siguiente:
+
+> The only difference about screwing around and science is writing down  --- https://twitter.com/FadingGender/status/1249669796448305152
+

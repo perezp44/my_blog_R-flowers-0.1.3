@@ -1,0 +1,21 @@
+[
+  {
+    "path": "posts/2020-04-13-sending-mails-with-r/",
+    "title": "Sending mails with R",
+    "description": "Cómo mandar mails con `gmailr`.   \nRepaso de otros paquetes para mandar mails con R.",
+    "author": [
+      {
+        "name": "Pedro J. Pérez",
+        "url": {}
+      }
+    ],
+    "date": "2020-04-13",
+    "categories": [
+      "R",
+      "mail",
+      "Google"
+    ],
+    "preview": {},
+    "last_modified": "2020-04-13T20:58:35+02:00"
+  }
+]
