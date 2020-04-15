@@ -42,18 +42,12 @@ library(tidyverse)
 
  
 ```{r, layout="l-body-outset", echo = FALSE, out.width = "10%",  fig.height= 7}
-knitr::include_graphics(here::here("imagenes", "foto-post-gmail.jpg"))
+knitr::include_graphics("./imagenes/foto-post-gmail.jpg")
 ```
  
 ## 0. Intro
 
 Estamos confinados en casa por el covid-19 y estamos viendo como examinamos a nuestros estudiantes. Parece que los exámenes serán online, así que me he puesto a recordar como puedo enviar e-mails con R. 
-
-
-
-```{r, echo = TRUE, eval = TRUE, fig.asp = 4/2, out.width = "75%", fig.align = "center", fig.cap = 'IA, ML y DL'}
-knitr::include_graphics(here::here("imagenes", "01_AI-ML-DL.png"))
-```
 
 
 Cuando mandaba mails con R usaba [`mailR`](https://rpremraj.github.io/mailR/) y funcionaba bastante bien, pero necesita la versión de Java 8.0 de Oracle. Ahora trabajo en un ordenador con Ubuntu y no quiero cambiar a Java 8.0, así que tendré que cambiar de método. La verdad es que en R hay unos cuantos paquetes para mandar mails, algunos de ellos los repasan en [este post](https://blog.mailtrap.io/r-send-email/). 
