@@ -993,16 +993,6 @@ Repaso de otros paquetes para mandar mails con R.</p>
 </div>
 <h2 id="intro">0. Intro</h2>
 <p>Estamos confinados en casa por el covid-19 y estamos viendo como examinamos a nuestros estudiantes. Parece que los exámenes serán online, así que me he puesto a recordar como puedo enviar e-mails con R.</p>
-<div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-knitr::include_graphics(&quot;./imagenes/01_AI-ML-DL.png&quot;)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="imagenes/01_AI-ML-DL.png" alt="IA, ML y DL" width="75%" />
-<p class="caption">
-Figure 1: IA, ML y DL
-</p>
-</div>
-</div>
 <p>Cuando mandaba mails con R usaba <a href="https://rpremraj.github.io/mailR/"><code>mailR</code></a> y funcionaba bastante bien, pero necesita la versión de Java 8.0 de Oracle. Ahora trabajo en un ordenador con Ubuntu y no quiero cambiar a Java 8.0, así que tendré que cambiar de método. La verdad es que en R hay unos cuantos paquetes para mandar mails, algunos de ellos los repasan en <a href="https://blog.mailtrap.io/r-send-email/">este post</a>.</p>
 <p>Trasteé un poco con varios paquetes, pero siempre tenía problemas con la autentificación en el servidor de la UV,incluso me planteé hacerlo con Phyton y medio leí <a href="https://realpython.com/python-send-email/#option-1-setting-up-a-gmail-account-for-development" target="_blank">este tutorial</a>, pero al final parece que seguiŕe en R y mandaré los mails con <a href="https://gmailr.r-lib.org/"><code>gmailr</code></a>, tal y como hace (o hacía) mi heRoine Jenny. Jenny nos cuenta como hace ella para mandar mails <a href="https://github.com/jennybc/send-email-with-r">aquí</a>.</p>
 <p>Al usar el paquete <code>gmailr</code> tendré que usar una cuenta de Gmail y además, la cuenta tiene que poder ser accedida por apps “sospechosas” o no verificadas. Por ello, me he creado una cuenta de Gmail lo más parecida a mi cuenta de la UV. Esta es: <code>pedro.j.perez.uv.es@gmail.com</code>.</p>
