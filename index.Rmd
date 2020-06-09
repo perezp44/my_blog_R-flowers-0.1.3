@@ -27,5 +27,5 @@ options(scipen = 999) #- para quitar la notacion cientifica
   
 Blog para divertirme y aprender, generalmente cosas sobre programación y R. Además acabo de ver un meme con lo siguiente:
 
-> The only difference about screwing around and science is writing down  --- https://twitter.com/FadingGender/status/1249669796448305152
+> **The only difference about screwing around and science is writing down**  --- https://twitter.com/FadingGender/status/1249669796448305152
 

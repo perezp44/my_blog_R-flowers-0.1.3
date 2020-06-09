@@ -1,3 +1,11 @@
+#- cada posts tiene q llevar su carpeta de imagenes etc...
+#- para que se cargen bien has de poner "./imagenes/imagen.jpg"  sin usar here::here()
+
+distill::create_post(title = "¿Se han reducido las camas hospitalarias desde 2008?", 
+                    author = "Pedro J. Pérez", date_prefix = TRUE, draft = TRUE)
+
+
+
 file.create(".nojekyll")
 #- crear un Distill post ------------------------------
 distill::create_post("Sending mails with R")

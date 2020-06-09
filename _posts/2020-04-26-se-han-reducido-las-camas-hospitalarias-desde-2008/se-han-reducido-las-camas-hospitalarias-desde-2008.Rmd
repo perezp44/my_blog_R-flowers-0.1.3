@@ -1,0 +1,169 @@
+---
+title: "¿Se han reducido las camas hospitalarias desde 2008?"
+description: |
+  A short description of the post.
+date: 04-26-2020
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r chunk_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE, 
+                      cache = FALSE, cache.path = "/caches/", comment = "#>",
+                      #fig.width = 7, fig.height= 7,   
+                      #out.width = 7, out.height = 7,
+                      collapse = TRUE,  fig.show = "hold",
+                      fig.asp = 7/9, out.width = "60%", fig.align = "center")
+```
+
+
+```{r options_setup, echo = FALSE}
+options(scipen = 999) #- para quitar la notacion cientifica
+```
+
+```{r, echo = FALSE}
+library(knitr)
+library(here)
+library(tidyverse)
+library(patchwork)
+```
+
+
+0. Intro
+
+Este post empece a escribirlo la primera semana del confinamiento. Ahora llevamos ya unos 40 días en nuestras casas y acaban de salir los niños ya a la calle. Genial!!! Esperemos que no haya rebrotes aunque parece seguro que alguno habrá, no por los niños, por lo que sea, pero yo creo que esto si ocurre ya nos cogera mucho más preparados a todos y no se puede estar mucho más tiempo encerrados, así que espero que llegue pronto "la dsescalada", no me gusta ese término, prefiero cualquier otro, por ejemplo "ir flexibilizando el confinamineto". No se porque tengo mania a "la deseaclada" supongo que es de tanto opirlo. Lo mismo me pasa con "distanciamiento social", no me gusta, porque no "distanciamineto físico" que es en realidad lo que hacemos. Bueno, que esto no es un blog linguistico ni filosofico, al menos de meomento. Bien por la salida de los niños y porque puedan jugar a la pelota, apesar de la canción de Serrat.
+
+Como veis los posts no los pienso ni los elaboró massa. Salen como salen, el blog es para jugar y aprender, y esto es lo que escribí la primera semana con la intención de hacer este post que se supone que ahora estoy cerrando:
+
+
+> Estamos todos preocupados y cabreados con la situación tan descabellada que se ha creado en todo el mundo por el covid-19. La verdad es que sin saber nada de epidemias, parece ser que no hay sistema sanitario que resista el número de contagios que se supone que va a haber, así que las medidas de confinamiento tratan de "aplanar la curva". Que os voy a contar!!
+
+> En esta semana que llevo prácticamente encerrado me han llamado la atención muchas cosas, pero esto es un blog para trabajar con datos, así que me centraré en [esta noticia](https://www.publico.es/tremending/2020/03/12/el-descomunal-minuto-de-un-enfermero-en-television-denunciando-los-recortes-en-la-sanidad-publica-madrilena/). En ella, Guillem del Barrio, enfermero del hospital de La Paz en Madrid afirma que en 2008 habian 2.100 camas más en la comunidad de Madrid que ahora. Vamos a ver si es verdad. No se si es verdad, pero si que todos sentimos que han habido fuertes recortes y privatizaciones en el area de salud. A ver que dicen los datos. Animo Guillem!! bueno animo a todo el personal sanitario y más colectivos!!
+
+
+Acabo de buscar "Cuillem de barrio" en internet y me ha devuelto varias noticias y parace que durante este tiempo que llevamos confinados ha habido una campaña de acoso sobre Guillem, al que no conozco. [Aquí](https://www.publico.es/sociedad/difamacion-enfermero-guillen-barrio-coronavirus-guillen-companeros-vuelcan-acoso-enfermero-critico-recortes.html) puedes ver una noticia sobre esto y como su compañeros le dieron apoyo. Ánimo otra vez Guillem!!!
+
+
+
+Resulta que yo hacia un tiempo que estaba trabajando con datos de partos en España, así que de forma tangencial ya habia visto los datos de hospitales. La verdad es que no les dedique mucho tiempo porque en lo que estaba trabajando es en los nacimientos, no en los hospitales, pero claro, tras esto, he decido volver a mirar los datos de hospitales en España y ver si Guillem tenía razón cuando afirmaba que se habían reducido las camas hospitalarias en Madrid.
+
+Primero iré a Eurostat para ver cómo ha evolucionado algunas variables en España y como nos situan en relacion a los demás paises de la UE. Despues iré al INE y creo que me remitirá, si no recuerdo mal, al Ministerio de Sanidad.
+
+
+
+# 1. Estadisticas sanitarias (Eurostat)
+
+Eurostat ofrece [aquí](https://ec.europa.eu/eurostat/web/health/overview) sus estadisticas sanitarias. Concretamente [aquí](https://ec.europa.eu/eurostat/web/health/data/database) están las bases de datos. Estás son las tablas que me han parecido interesantes:
+
+-  Health care expenditure by provider [hlth_sha11_hp]  
+-  Health care expenditure by function [hlth_sha11_hc]
+-  Health personnel employed in hospital [hlth_rs_prshp1]
+-  Health personnel by NUTS 2 regions [hlth_rs_prsrg]
+-  Health personnel (excluding nursing and caring professionals) [hlth_rs_prs1]
+-  Hospital beds by type of care [hlth_rs_bds]
+-  Hospital beds by hospital ownership [hlth_rs_bds2]
+-  Hospital beds by NUTS 2 regions [hlth_rs_bdsrg]
+-  Technical resources in hospital [hlth_rs_tech]
+-  Medical technology [hlth_rs_equip]
+
+
+De momento sólo voy a mirar 2 tablas, concretamente: 
+
+-  Health care expenditure by provider [hlth_sha11_hp]  
+-  Hospital beds by type of care [hlth_rs_bds]
+
+   
+Para bajar los datos usaré el paquete [`eurostat`](http://ropengov.github.io/eurostat/)
+
+
+```{r, echo = FALSE}
+library("tidyverse")
+library("eurostat")
+```
+
+
+```{r, echo = FALSE}
+mis_tablas <- c("hlth_sha11_hp", "hlth_rs_prshp1", "hlth_rs_prsrg", "hlth_rs_prs1", "hlth_rs_bds", "hlth_rs_bds2", "hlth_rs_bdsrg")
+my_table <- mis_tablas[1]            #- 
+label_eurostat_tables(my_table)      #- gives information about the table
+```
+
+
+## 1.1 Gasto sanitario
+
+Empecemos con el gasto sanitario. El gasto sanitario está en la tabla `hlth_sha11_hp`. la tabla tiene muchos indicadores, tiene el desglose del gasto sanitario en distintas categorias: hospitales, ambulatorios, dentistas ... seleccionaré el gasto total en euros por habitante, en la jerga de Eurostat estoy seleccionando el gasto de "All providers of health care". El que quiera ver el código tendrá que ir al repo de Github.
+
+
+```{r, eval = TRUE}
+df <- get_eurostat(my_table, time_format = 'raw', keepFlags = T )       #- downloads the table from Eurostat API
+df_l <- label_eurostat(df) 
+df_zz <- pjpv2020.01::pjp_f_valores_unicos(df_l)        #- valores únicos de cada variable de df
+df <- label_eurostat(df, code = c("geo", "unit", "icha11_hp"))
+#my_geo <- c("ES", "FI", "FR", "DK", "BE", "AT", "IT", "NO", "PT", "UK", "DE")
+#dfa <- df %>% filter(geo_code %in% my_geo) %>% 
+           
+dfa <- df %>% filter(unit_code == "EUR_HAB") %>% 
+              filter(icha11_hp_code == "TOTAL") #- 
+#- corregir algunos nombre de los levels
+dfa <- dfa %>% mutate(geo = forcats::fct_recode(geo, Germany = "Germany (until 1990 former territory of the FRG)",
+                                                     EU_15 = "European Union - 15 countries (1995-2004)",
+                                                     EU_27 = "European Union - 27 countries (2007-2013)",
+                                                     EU_28 = "European Union - 28 countries (2013-2020)" )                                               )
+#- eliminar algunas categorias/levels     
+levels_to_drop <- c("Euro area - 12 countries (2001-2006)", "Euro area - 18 countries (2014)", 
+                    "Euro area - 19 countries  (from 2015)", "European Union - 27 countries (from 2020)")
+dfa <- dfa %>% dplyr::filter(!(geo %in% levels_to_drop)) #- no hay en esas categorías
+
+
+#zz <- df %>% filter(time == 2017) %>% arrange(desc(values))
+```
+
+
+Veamos cómo está España en cuanto gasto sanitario total por habitante en comparación con nuestros socios europeos. uso los datos de 2017 que son los últimos datos disponibles en el momentod e hacer la consulta (abril de 2020).
+
+
+```{r}
+zz <- dfa %>% filter(time == 2017) %>% arrange(desc(values))
+my_geo <- c("ES", "LI", "FR", "BE",  "IT", "NO", "PT", "UK", "DE")
+zz_esp <- zz %>% filter(geo_code %in% my_geo)
+
+p <- ggplot(zz, aes(x = forcats::fct_reorder(geo_code, values), y = values)) + geom_col(fill = "steelblue") + coord_flip() +  #- https://kieranhealy.org/blog/archives/2020/04/23/apples-covid-mobility-data/
+labs(x = NULL, y = NULL, 
+       color = "Mode",
+       title = "Gasto sanitario por habitante en 2017",
+       #subtitle = "Data are indexed to 100 for usage on January 13th 2020. Weekends shown as vertical bars. Date with highest relative activity index labeled.\nNote that in Apple's data 'Days' are defined as Midnight to Midnight PST.",
+       caption = "Data: Eurostat") +
+    theme(legend.position = "top")
+
+p + gghighlight::gghighlight(geo == "Spain") + 
+    geom_text(data = zz_esp, aes(label = paste(geo, ":  ", round(values))), hjust = 1.2)
+```
+
+
+Vamos que Spain no está entre los primeros en cuanto a gasto sanitario per capita. Bueno estamos por la mitad pero, sin menospreciar a ningún pais, tenemos un gasto en sanidad que es la mitad del de Alemania, bastante por debajo del de Francia, por debajo de Italia y solo ligeramente, un 31%, por encima del de Portugal. Igual la explicación es que los españoles somos fuertes como robles y necesitamos gastar menos en sanidad, pero la verdad, no creo que sea esa la explicación. Igual somos más pobres o igual gastamos el dinero en otra cosa.
+
+
+Hago un gráfico del **gasto por habitante** en el tiempo. Voy a restringir la muestra 
+Mira esta referencia: <https://scottishsnow.wordpress.com/2020/04/24/lubridate-ggplot-date-helpers/>
+
+```{r}
+my_geo <- c("ES", "FR", "BE",  "IT", "PT", "UK", "DE")
+
+zz <- dfa %>% filter(between(as.integer(time), 2005, 2017)) %>% filter(geo_code %in% my_geo)
+
+ggplot(zz, aes(x = time, y = values, group = geo)) + geom_line() + gghighlight::gghighlight(geo %in% c("Spain", "Italy")) 
+
+
+
+df <- gapminder::gapminder %>% filter(continent == "Europe")
+ggplot(df, aes(year, lifeExp, group = country)) + 
+  geom_line() + 
+  geom_point() + 
+  gghighlight::gghighlight(country %in% c("Spain", "Portugal"))
+```
+
