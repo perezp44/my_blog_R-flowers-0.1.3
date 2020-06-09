@@ -1,4 +1,4 @@
-#- Tareas ha hacer:
+#- Tareas a hacer:
 
 #- 1) q se vean las figuras mas pequeñas
 #- 2) ver el workflow de los blogs de ejemplos
